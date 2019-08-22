@@ -7,50 +7,52 @@
 
 using namespace std;
 
-char* input(int minL, const char* output, const char* msg) {
+int strlen(char* str, int arrlen){
   
-  char eingabe[100];
+  int length = 0;
   
-  for(int i = 0; i < 100; i++) {
-    eingabe[i] = '\0';
-  }
-  
-  int length;
-  
-  do {
-    cout << output;
-    cin >> eingabe;
-    
-    length = 0;
-    
-    for(int i = 0; i < 100; i++) {
-      if(eingabe[i] == '\0') {
-        break;
-      }
-      else {
-        length++;
-      }
+  for(int i = 0; i < arrlen; i++) {
+    if(*(str + i) == '\0') {
+      break;
     }
+    else {
+      length++;
+    }
+  }
     
     /*
     int length = 0;
     while(eingabe[length] != '\0')
       length++;
     */
-    
-    if( length < minL ) {
-      cout << msg << endl;
-      for(int i = 0; i < 100; i++) {
-        eingabe[i] = '\0';
-      }
-    }
-      
-  } while ( length < minL );
-                             
-  return eingabe;
+  
+  return length;
 }
 
+void clearString(char* str, int length){
+  for(int i = 0; i < length; i++) {
+    *(str + i) = '\0';
+  }
+}
 
+char* input(int minL, const char* output, const char* msg) {
+  
+  char eingabe[100];
+  
+  clearString(eingabe, 100);  
+  
+  do {
+    cout << output;
+    cin >> eingabe;
+    
+    if( strlen(eingabe) < minL ) {
+      cout << msg << endl;
+      clearString(eingabe, 100);
+    }
+      
+  } while ( strlen(eingabe) < minL );
+                             
+  return eingabe;
 }
 
 int numberInput(int max, int min, const char* output, const char* msg) {
@@ -81,7 +83,7 @@ Person personInput(){
 }
 
 int adressbuch (){
-
+  
 }
 
 

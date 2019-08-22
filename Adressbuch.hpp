@@ -12,11 +12,17 @@ struct Person {
   int Alter;
   double Groesse;
   bool Geschlecht;
-};
+}; 
 
 Person personInput();
 
-char* input (int minL = 3, const char* output = "Input: ", const char* msg = "Eingabe ungueltig");
+int strlen(char* str, int arrlen = 100);
+
+char* input (
+             int minL = 3,
+             const char* output = "Input: ",
+             const char* msg = "Eingabe ungueltig"
+            );
 
 int numberInput(
                 int max = 100,
